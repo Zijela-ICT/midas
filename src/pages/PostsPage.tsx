@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { navigate } from '../navigation'
 
 const API_URL = 'https://indigo-turkey-497183.hostingersite.com/wp-json/wp/v2/posts'
 const POSTS_PER_PAGE = 6
@@ -10,6 +11,7 @@ const fallbackImages = [
 
 type WpPost = {
   id: number
+  slug: string
   date: string
   link: string
   title: { rendered: string }
@@ -80,9 +82,9 @@ export function PostsPage() {
           const media = post._embedded?.['wp:featuredmedia']?.[0]
           const category = post._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Insights'
           const author = post._embedded?.author?.[0]?.name
-          return <article className={'post-card ' + (index === 0 ? 'featured' : '')} key={post.id}>
-            <a className="post-image" href={post.link} target="_blank" rel="noreferrer"><img src={media?.source_url || fallbackImages[post.id % fallbackImages.length]} alt={media?.alt_text || ''} /><span>{category}</span></a>
-            <div className="post-body"><div className="post-meta"><time dateTime={post.date}>{new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(post.date))}</time>{author && <><i /> <span>{author}</span></>}</div><h3><a href={post.link} target="_blank" rel="noreferrer">{textOnly(post.title.rendered)}</a></h3><p>{textOnly(post.excerpt.rendered)}</p><a className="read-link" href={post.link} target="_blank" rel="noreferrer">Read article <span>↗</span></a></div>
+          return <article className={'post-card '+(index===0?'featured':'')} key={post.id}>
+            <a className="post-image" href={`/posts/${post.slug}`} onClick={e=>{e.preventDefault();navigate(`/posts/${post.slug}`)}}><img src={media?.source_url || fallbackImages[post.id % fallbackImages.length]} alt={media?.alt_text || ''}/><span>{category}</span></a>
+            <div className="post-body"><div className="post-meta"><time dateTime={post.date}>{new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(post.date))}</time>{author && <><i/> <span>{author}</span></>}</div><h3><a href={`/posts/${post.slug}`} onClick={e=>{e.preventDefault();navigate(`/posts/${post.slug}`)}}>{textOnly(post.title.rendered)}</a></h3><p>{textOnly(post.excerpt.rendered)}</p><a className="read-link" href={`/posts/${post.slug}`} onClick={e=>{e.preventDefault();navigate(`/posts/${post.slug}`)}}>Read article <span>→</span></a></div>
           </article>
         })}</div>}
         {!loading && !error && totalPages > 1 && <nav className="pagination" aria-label="Posts pagination"><button onClick={() => selectPage(page - 1)} disabled={page === 1} aria-label="Previous page">←</button>{Array.from({ length: totalPages }, (_, i) => i + 1).map(number => <button className={number === page ? 'current' : ''} onClick={() => selectPage(number)} aria-current={number === page ? 'page' : undefined} key={number}>{number}</button>)}<button onClick={() => selectPage(page + 1)} disabled={page === totalPages} aria-label="Next page">→</button></nav>}

@@ -8,6 +8,7 @@ import { IndustriesPage } from './pages/IndustriesPage'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { PostsPage } from './pages/PostsPage'
+import { BlogPostPage } from './pages/BlogPostPage'
 
 const routes = {
   '/': HomePage,
@@ -28,7 +29,10 @@ function App() {
   }, [])
 
   const Page = routes[path as keyof typeof routes] ?? HomePage
-  return <div className="site-shell"><Header path={path} /><main><Page /></main><Footer /></div>
+  const content = path.startsWith('/posts/')
+    ? <BlogPostPage slug={decodeURIComponent(path.slice('/posts/'.length))} />
+    : <Page />
+  return <div className="site-shell"><Header path={path} /><main>{content}</main><Footer /></div>
 }
 
 export default App

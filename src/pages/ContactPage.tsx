@@ -1,2 +1,102 @@
-import { PageHero } from '../components/PageHero';
-export function ContactPage(){return <><PageHero eyebrow="Contact Midas" title="Let’s move forward." copy="Tell us where your business needs to go. Our team will design the right logistics solution to get it there." image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=88"/><section className="section paper"><div className="container contact-grid"><div className="contact-card"><h3>Talk to our team</h3><div className="contact-item"><small>Nigeria office</small><p>24 Adegbola Street, Opposite Railway Line, Ikeja, Lagos State.</p></div><div className="contact-item"><small>United Kingdom office</small><p>98 Hope Street, Leigh WN7 1NP, Greater Manchester, United Kingdom.</p></div><div className="contact-item"><small>Telephone & WhatsApp</small><a href="tel:+2348182072342">+234 818 207 2342</a><br/><a href="tel:+2348161640774">+234 816 164 0774</a><br/><a href="tel:+447858022086">+44 7858 022086</a></div><div className="contact-item"><small>Email</small><a href="mailto:info@midaslogisticssolutions.com">info@midaslogisticssolutions.com</a></div></div><div className="intro-copy"><div className="eyebrow">Request a quote</div><h2>What can we move for you?</h2><p>Share a few details and a member of our team will be in touch.</p><form className="form" action="mailto:info@midaslogisticssolutions.com" method="post" encType="text/plain"><div className="form-row"><input required name="name" placeholder="Your name" aria-label="Your name"/><input required type="email" name="email" placeholder="Email address" aria-label="Email address"/></div><div className="form-row"><input name="company" placeholder="Company" aria-label="Company"/><input name="phone" placeholder="Phone number" aria-label="Phone number"/></div><input name="service" placeholder="Service required" aria-label="Service required"/><textarea required name="message" placeholder="Tell us about your shipment or project" aria-label="Project details"/><button className="button" type="submit">Send enquiry</button></form></div></div></section></>}
+import { PageHero } from "../components/PageHero";
+export function ContactPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Contact Midas"
+        title="Let’s move forward."
+        copy="Tell us where your business needs to go. Our team will design the right logistics solution to get it there."
+        image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=88"
+      />
+      <section className="section paper">
+        <div className="container contact-grid">
+          <div className="contact-card">
+            <h3>Talk to our team</h3>
+            <div className="contact-item">
+              <small>Nigeria office</small>
+              <p>
+                24 Adegbola Street, Opposite Railway Line, Ikeja, Lagos State.
+              </p>
+            </div>
+            <div className="contact-item">
+              <small>United Kingdom office</small>
+              <p>
+                98 Hope Street, Leigh WN7 1NP, Greater Manchester, United
+                Kingdom.
+              </p>
+            </div>
+            <div className="contact-item">
+              <small>Telephone & WhatsApp</small>
+              <a href="tel:+2348182072342">+234 818 207 2342</a>
+              <br />
+              <a href="tel:+2348161640774">+234 816 164 0774</a>
+              <br />
+              <a href="tel:+447858022086">+44 7858 022086</a>
+            </div>
+            <div className="contact-item">
+              <small>Email</small>
+              <a href="mailto:info@midaslogisticssolutions.com">
+                info@midaslogisticssolutions.com
+              </a>
+            </div>
+          </div>
+          <div className="intro-copy">
+            <div className="eyebrow">Request a quote</div>
+            <h2>What can we move for you?</h2>
+            <p>
+              Share a few details and a member of our team will be in touch.
+            </p>
+            <form
+              className="form"
+              action="mailto:info@midaslogisticssolutions.com"
+              method="post"
+              encType="text/plain"
+            >
+              <div className="form-row">
+                <input
+                  required
+                  name="name"
+                  placeholder="Your name"
+                  aria-label="Your name"
+                />
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                  aria-label="Email address"
+                />
+              </div>
+              <div className="form-row">
+                <input
+                  name="company"
+                  placeholder="Company"
+                  aria-label="Company"
+                />
+                <input
+                  name="phone"
+                  placeholder="Phone number"
+                  aria-label="Phone number"
+                />
+              </div>
+              <input
+                name="service"
+                placeholder="Service required"
+                aria-label="Service required"
+              />
+              <textarea
+                required
+                name="message"
+                placeholder="Tell us about your shipment or project"
+                aria-label="Project details"
+              />
+              <button className="button" type="submit">
+                Send enquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

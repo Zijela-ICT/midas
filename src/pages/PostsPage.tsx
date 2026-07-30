@@ -66,26 +66,26 @@ export function PostsPage() {
   return <>
     <section className="posts-hero">
       <div className="container posts-hero-inner">
-        <div><div className="eyebrow">Ideas in motion</div><h1>Insights for a world<br/><em>on the move.</em></h1></div>
+        <div><div className="eyebrow">Ideas in motion</div><h1>Insights for a world<br /><em>on the move.</em></h1></div>
         <p>Practical thinking, industry perspectives and useful updates from the Midas logistics team.</p>
       </div>
     </section>
     <section className="section posts-section">
       <div className="container">
         <div className="posts-heading"><div><span>Latest intelligence</span><h2>From the Midas journal</h2></div><p>Explore our latest thinking on freight, procurement, warehousing and resilient supply chains.</p></div>
-        {loading && <div className="posts-grid" aria-label="Loading articles">{Array.from({length:6}).map((_,i)=><div className="post-skeleton" key={i}><div/><span/><span/></div>)}</div>}
-        {error && <div className="posts-message"><h3>We couldn’t load the journal.</h3><p>Please check your connection and try again.</p><button className="button" onClick={()=>{setLoading(true);setError(false);setReload(current=>current+1)}}>Try again</button></div>}
+        {loading && <div className="posts-grid" aria-label="Loading articles">{Array.from({ length: 6 }).map((_, i) => <div className="post-skeleton" key={i}><div /><span /><span /></div>)}</div>}
+        {error && <div className="posts-message"><h3>We couldn’t load the journal.</h3><p>Please check your connection and try again.</p><button className="button" onClick={() => { setLoading(true); setError(false); setReload(current => current + 1) }}>Try again</button></div>}
         {!loading && !error && posts.length === 0 && <div className="posts-message"><h3>New insights are on the way.</h3><p>Check back soon for the latest from our team.</p></div>}
-        {!loading && !error && posts.length > 0 && <div className="posts-grid">{posts.map((post,index) => {
+        {!loading && !error && posts.length > 0 && <div className="posts-grid">{posts.map((post, index) => {
           const media = post._embedded?.['wp:featuredmedia']?.[0]
           const category = post._embedded?.['wp:term']?.[0]?.[0]?.name ?? 'Insights'
           const author = post._embedded?.author?.[0]?.name
-          return <article className={'post-card '+(index===0?'featured':'')} key={post.id}>
-            <a className="post-image" href={post.link} target="_blank" rel="noreferrer"><img src={media?.source_url || fallbackImages[post.id % fallbackImages.length]} alt={media?.alt_text || ''}/><span>{category}</span></a>
-            <div className="post-body"><div className="post-meta"><time dateTime={post.date}>{new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(post.date))}</time>{author && <><i/> <span>{author}</span></>}</div><h3><a href={post.link} target="_blank" rel="noreferrer">{textOnly(post.title.rendered)}</a></h3><p>{textOnly(post.excerpt.rendered)}</p><a className="read-link" href={post.link} target="_blank" rel="noreferrer">Read article <span>↗</span></a></div>
+          return <article className={'post-card ' + (index === 0 ? 'featured' : '')} key={post.id}>
+            <a className="post-image" href={post.link} target="_blank" rel="noreferrer"><img src={media?.source_url || fallbackImages[post.id % fallbackImages.length]} alt={media?.alt_text || ''} /><span>{category}</span></a>
+            <div className="post-body"><div className="post-meta"><time dateTime={post.date}>{new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(post.date))}</time>{author && <><i /> <span>{author}</span></>}</div><h3><a href={post.link} target="_blank" rel="noreferrer">{textOnly(post.title.rendered)}</a></h3><p>{textOnly(post.excerpt.rendered)}</p><a className="read-link" href={post.link} target="_blank" rel="noreferrer">Read article <span>↗</span></a></div>
           </article>
         })}</div>}
-        {!loading && !error && totalPages > 1 && <nav className="pagination" aria-label="Posts pagination"><button onClick={()=>selectPage(page-1)} disabled={page===1} aria-label="Previous page">←</button>{Array.from({length:totalPages},(_,i)=>i+1).map(number=><button className={number===page?'current':''} onClick={()=>selectPage(number)} aria-current={number===page?'page':undefined} key={number}>{number}</button>)}<button onClick={()=>selectPage(page+1)} disabled={page===totalPages} aria-label="Next page">→</button></nav>}
+        {!loading && !error && totalPages > 1 && <nav className="pagination" aria-label="Posts pagination"><button onClick={() => selectPage(page - 1)} disabled={page === 1} aria-label="Previous page">←</button>{Array.from({ length: totalPages }, (_, i) => i + 1).map(number => <button className={number === page ? 'current' : ''} onClick={() => selectPage(number)} aria-current={number === page ? 'page' : undefined} key={number}>{number}</button>)}<button onClick={() => selectPage(page + 1)} disabled={page === totalPages} aria-label="Next page">→</button></nav>}
       </div>
     </section>
   </>

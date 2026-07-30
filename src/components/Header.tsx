@@ -1,3 +1,62 @@
-import { useEffect, useState } from 'react'; import { navigate } from '../navigation';
-const links=[['/','Home'],['/services','Services'],['/industries','Industries'],['/posts','Insights'],['/about','About'],['/contact','Contact']]
-export function Header({path}:{path:string}){const[open,setOpen]=useState(false);const[scrolled,setScrolled]=useState(false);useEffect(()=>{const f=()=>setScrolled(scrollY>20);addEventListener('scroll',f);return()=>removeEventListener('scroll',f)},[]);const go=(e:React.MouseEvent<HTMLAnchorElement>,p:string)=>{e.preventDefault();setOpen(false);navigate(p)};return <header className={'header '+(scrolled?'scrolled':'')}><div className="container nav"><a className="logo" href="/" onClick={e=>go(e,'/')}><img src="/midas-logo.jpg" alt="Midas Global Solutions Limited"/></a><button className="menu" aria-label="Toggle navigation" onClick={()=>setOpen(!open)}>☰</button><nav className={'nav-links '+(open?'open':'')} aria-label="Main navigation">{links.map(([p,l])=><a key={p} className={'nav-link '+(path===p?'active':'')} href={p} onClick={e=>go(e,p)}>{l}</a>)}</nav><a className="nav-cta" href="/contact" onClick={e=>go(e,'/contact')}>Request a quote</a></div></header>}
+import { useEffect, useState } from "react";
+import { navigate } from "../navigation";
+const links = [
+  ["/", "Home"],
+  ["/services", "Services"],
+  ["/industries", "Industries"],
+  ["/posts", "Insights"],
+  ["/about", "About"],
+  ["/contact", "Contact"],
+];
+export function Header({ path }: { path: string }) {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const f = () => setScrolled(scrollY > 20);
+    addEventListener("scroll", f);
+    return () => removeEventListener("scroll", f);
+  }, []);
+  const go = (e: React.MouseEvent<HTMLAnchorElement>, p: string) => {
+    e.preventDefault();
+    setOpen(false);
+    navigate(p);
+  };
+  return (
+    <header className={"header " + (scrolled ? "scrolled" : "")}>
+      <div className="container nav">
+        <a className="logo" href="/" onClick={(e) => go(e, "/")}>
+          <img src="/midas-nobg.png" alt="Midas Global Solutions Limited" />
+        </a>
+        <button
+          className="menu"
+          aria-label="Toggle navigation"
+          onClick={() => setOpen(!open)}
+        >
+          ☰
+        </button>
+        <nav
+          className={"nav-links " + (open ? "open" : "")}
+          aria-label="Main navigation"
+        >
+          {links.map(([p, l]) => (
+            <a
+              key={p}
+              className={"nav-link " + (path === p ? "active" : "")}
+              href={p}
+              onClick={(e) => go(e, p)}
+            >
+              {l}
+            </a>
+          ))}
+        </nav>
+        <a
+          className="nav-cta"
+          href="/contact"
+          onClick={(e) => go(e, "/contact")}
+        >
+          Request a quote
+        </a>
+      </div>
+    </header>
+  );
+}

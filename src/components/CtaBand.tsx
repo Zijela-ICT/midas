@@ -1,0 +1,1 @@
+import { navigate } from '../navigation'; export function CtaBand(){return <section className="cta-band"><div className="container cta-inner"><h2>Let’s make your supply chain work smarter.</h2><a className="button" href="/contact" onClick={e=>{e.preventDefault();navigate('/contact')}}>Start a conversation</a></div></section>}

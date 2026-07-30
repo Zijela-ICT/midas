@@ -17,3 +17,5 @@
 .logo{background:#fff;padding:5px 9px;border-radius:2px;box-shadow:0 7px 24px rgba(0,0,0,.12)}
 .logo img{filter:none;display:block}
 .footer-logo{filter:none;background:#fff;padding:8px;border-radius:2px}
+.logo{background:transparent;padding:0;border-radius:0;box-shadow:none}
+.footer-logo{background:transparent;padding:0;border-radius:0}

@@ -7,6 +7,7 @@ import { ServicesPage } from './pages/ServicesPage'
 import { IndustriesPage } from './pages/IndustriesPage'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
+import { PostsPage } from './pages/PostsPage'
 
 const routes = {
   '/': HomePage,
@@ -14,6 +15,7 @@ const routes = {
   '/industries': IndustriesPage,
   '/about': AboutPage,
   '/contact': ContactPage,
+  '/posts': PostsPage,
 }
 
 function App() {

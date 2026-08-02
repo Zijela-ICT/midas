@@ -10,6 +10,7 @@ import { ContactPage } from './pages/ContactPage'
 import { PostsPage } from './pages/PostsPage'
 import { BlogPostPage } from './pages/BlogPostPage'
 import { ShippingCalculatorPage } from './pages/ShippingCalculatorPage'
+import { CalculatorCta } from './components/CalculatorCta'
 
 const routes = {
   '/': HomePage,
@@ -34,7 +35,7 @@ function App() {
   const content = path.startsWith('/posts/')
     ? <BlogPostPage slug={decodeURIComponent(path.slice('/posts/'.length))} />
     : <Page />
-  return <div className="site-shell"><Header path={path} /><main>{content}</main><Footer /></div>
+  return <div className="site-shell"><Header path={path} /><main>{content}</main>{path !== '/calculator' && <CalculatorCta />}<Footer /></div>
 }
 
 export default App

@@ -31,3 +31,6 @@
 .support-launcher:hover{background:#ead38e;box-shadow:0 18px 48px rgba(0,0,0,.4),0 0 0 7px rgba(213,189,119,.28)}
 .support-launcher-label small{color:#5e512f}
 .support-launcher>i{background:var(--ink);color:var(--gold2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.footer-grid{grid-template-columns:1.15fr .65fr .65fr 1.35fr}.footer-office{padding-bottom:13px;margin-bottom:13px;border-bottom:1px solid rgba(255,255,255,.08)}.footer-office b{display:block;color:var(--gold2);font-size:9px;text-transform:uppercase;letter-spacing:.13em;margin-bottom:5px}.footer-office p{margin:0;font-size:11px;line-height:1.55}.footer-contact-links{gap:7px}.footer-contact-links a{font-size:11px;overflow-wrap:anywhere}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.footer-contact{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}.footer-contact h4,.footer-contact-links{grid-column:1/-1}.footer-contact-links{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.footer-contact{grid-column:auto;display:block}.footer-contact-links{display:grid;grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}

@@ -9,6 +9,7 @@ import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { PostsPage } from './pages/PostsPage'
 import { BlogPostPage } from './pages/BlogPostPage'
+import { ShippingCalculatorPage } from './pages/ShippingCalculatorPage'
 
 const routes = {
   '/': HomePage,
@@ -17,6 +18,7 @@ const routes = {
   '/about': AboutPage,
   '/contact': ContactPage,
   '/posts': PostsPage,
+  '/calculator': ShippingCalculatorPage,
 }
 
 function App() {

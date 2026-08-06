@@ -15,7 +15,7 @@ export function HomePage() {
           poster="/our-work/project-12.jpeg"
           aria-hidden="true"
         >
-          <source src="/our-work/project-video-01.mp4" type="video/mp4" />
+          <source src="/hero-shipping.mp4" type="video/mp4" />
         </video>
         <div className="container hero-copy">
           <div className="eyebrow">Global logistics • Local expertise</div>

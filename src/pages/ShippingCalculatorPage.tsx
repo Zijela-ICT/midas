@@ -16,7 +16,7 @@ const defaults = {
 }
 
 type Field = keyof typeof defaults
-type Values = typeof defaults
+type Values = { [Key in Field]: number | '' }
 
 function CalculatorInput({ field, label, unit, values, onChange, step = '1' }: { field: Field; label: string; unit: string; values: Values; onChange: (field: Field, raw: string) => void; step?: string }) {
   return <label className="calc-field"><span>{label}</span><div><input type="number" min="0" step={step} value={values[field]} onChange={event => onChange(field, event.target.value)} /><b>{unit}</b></div></label>
@@ -27,21 +27,24 @@ const ngn = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN',
 const number = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 })
 
 export function ShippingCalculatorPage() {
-  const [values, setValues] = useState(defaults)
-  const set = (field: Field, raw: string) => setValues(current => ({ ...current, [field]: Math.max(0, Number(raw) || 0) }))
+  const [values, setValues] = useState<Values>(defaults)
+  const set = (field: Field, raw: string) => setValues(current => ({ ...current, [field]: raw === '' ? '' : Math.max(0, Number(raw)) }))
+  const numericValues = useMemo(() => Object.fromEntries(
+    Object.entries(values).map(([field, value]) => [field, value === '' ? 0 : value])
+  ) as Record<Field, number>, [values])
 
   const result = useMemo(() => {
-    const volumetricWeight = values.divisor ? (values.length * values.width * values.height) / values.divisor : 0
-    const chargeableWeight = Math.max(values.weight, volumetricWeight)
-    const freightGbp = chargeableWeight * values.freightRate
-    const freightNgn = freightGbp * values.exchangeRate
-    const cifGbp = values.goodsValue + values.insurance + freightGbp
-    const cifNgn = cifGbp * values.exchangeRate
-    const dutyNgn = cifNgn * (values.dutyRate / 100)
-    const shippingAndImportCharges = freightNgn + dutyNgn + values.localCharges
-    const totalLandedValue = (values.goodsValue + values.insurance) * values.exchangeRate + shippingAndImportCharges
+    const volumetricWeight = numericValues.divisor ? (numericValues.length * numericValues.width * numericValues.height) / numericValues.divisor : 0
+    const chargeableWeight = Math.max(numericValues.weight, volumetricWeight)
+    const freightGbp = chargeableWeight * numericValues.freightRate
+    const freightNgn = freightGbp * numericValues.exchangeRate
+    const cifGbp = numericValues.goodsValue + numericValues.insurance + freightGbp
+    const cifNgn = cifGbp * numericValues.exchangeRate
+    const dutyNgn = cifNgn * (numericValues.dutyRate / 100)
+    const shippingAndImportCharges = freightNgn + dutyNgn + numericValues.localCharges
+    const totalLandedValue = (numericValues.goodsValue + numericValues.insurance) * numericValues.exchangeRate + shippingAndImportCharges
     return { volumetricWeight, chargeableWeight, freightGbp, freightNgn, cifGbp, cifNgn, dutyNgn, shippingAndImportCharges, totalLandedValue }
-  }, [values])
+  }, [numericValues])
 
   return <>
     <section className="calc-hero"><div className="container"><div className="eyebrow">Plan with confidence</div><h1>Shipping & landed<br/><em>cost calculator.</em></h1><p>Estimate air freight, customs duty and the total cost of moving goods from the United Kingdom to Nigeria.</p></div></section>
@@ -54,19 +57,19 @@ export function ShippingCalculatorPage() {
       </div>
       <aside className="calculator-results">
         <div className="results-top"><span>Live estimate</span><small>UK → Nigeria · Air freight</small></div>
-        <div className="weight-result"><span>Chargeable weight</span><strong>{number.format(result.chargeableWeight)} <small>kg</small></strong><p>{result.volumetricWeight > values.weight ? 'Volumetric weight applies because it exceeds actual weight.' : 'Actual weight applies because it exceeds volumetric weight.'}</p></div>
+        <div className="weight-result"><span>Chargeable weight</span><strong>{number.format(result.chargeableWeight)} <small>kg</small></strong><p>{result.volumetricWeight > numericValues.weight ? 'Volumetric weight applies because it exceeds actual weight.' : 'Actual weight applies because it exceeds volumetric weight.'}</p></div>
         <div className="result-lines">
           <div><span>Volumetric weight</span><b>{number.format(result.volumetricWeight)} kg</b></div>
           <div><span>Freight charge</span><b>{ngn.format(result.freightNgn)}</b><small>{gbp.format(result.freightGbp)}</small></div>
           <div><span>CIF value</span><b>{ngn.format(result.cifNgn)}</b><small>{gbp.format(result.cifGbp)}</small></div>
-          <div><span>Estimated duty & taxes</span><b>{ngn.format(result.dutyNgn)}</b><small>{number.format(values.dutyRate)}% of CIF</small></div>
-          {values.localCharges > 0 && <div><span>Local & other charges</span><b>{ngn.format(values.localCharges)}</b></div>}
+          <div><span>Estimated duty & taxes</span><b>{ngn.format(result.dutyNgn)}</b><small>{number.format(numericValues.dutyRate)}% of CIF</small></div>
+          {numericValues.localCharges > 0 && <div><span>Local & other charges</span><b>{ngn.format(numericValues.localCharges)}</b></div>}
         </div>
         <div className="result-total"><span>Freight + import charges</span><strong>{ngn.format(result.shippingAndImportCharges)}</strong><small>Excluding the purchase value of goods</small></div>
         <div className="result-landed"><span>Estimated total landed value</span><b>{ngn.format(result.totalLandedValue)}</b><small>Goods + insurance + freight + estimated import/local charges</small></div>
         <button className="button calc-quote" onClick={() => navigate('/contact')}>Get an accurate quote</button>
       </aside>
     </div></section>
-    <section className="calc-explainer"><div className="container"><div className="section-heading"><div><div className="eyebrow">How it works</div><h2>Clear numbers, step by step.</h2></div><p>Air freight is charged against whichever is greater: the shipment’s actual weight or its volumetric weight.</p></div><div className="formula-grid"><article><span>01</span><h3>Volumetric weight</h3><p>Length × width × height ÷ freight divisor</p><b>{number.format(values.length)} × {number.format(values.width)} × {number.format(values.height)} ÷ {number.format(values.divisor)} = {number.format(result.volumetricWeight)} kg</b></article><article><span>02</span><h3>Freight charge</h3><p>Chargeable weight × freight rate × exchange rate</p><b>{number.format(result.chargeableWeight)} kg × {gbp.format(values.freightRate)} × ₦{number.format(values.exchangeRate)} = {ngn.format(result.freightNgn)}</b></article><article><span>03</span><h3>Estimated duty</h3><p>Duty estimate × CIF value (goods + insurance + freight)</p><b>{number.format(values.dutyRate)}% × {ngn.format(result.cifNgn)} = {ngn.format(result.dutyNgn)}</b></article></div><div className="calc-notice"><strong>Important estimate notice</strong><p>This calculator provides an indicative estimate only. Nigerian Customs assessments depend on the correct HS code, official customs exchange rate, product classification, applicable levies and documentation. It excludes storage, demurrage and agency fees unless entered as local charges. Contact Midas for a formal quotation and customs assessment.</p></div></div></section>
+    <section className="calc-explainer"><div className="container"><div className="section-heading"><div><div className="eyebrow">How it works</div><h2>Clear numbers, step by step.</h2></div><p>Air freight is charged against whichever is greater: the shipment’s actual weight or its volumetric weight.</p></div><div className="formula-grid"><article><span>01</span><h3>Volumetric weight</h3><p>Length × width × height ÷ freight divisor</p><b>{number.format(numericValues.length)} × {number.format(numericValues.width)} × {number.format(numericValues.height)} ÷ {number.format(numericValues.divisor)} = {number.format(result.volumetricWeight)} kg</b></article><article><span>02</span><h3>Freight charge</h3><p>Chargeable weight × freight rate × exchange rate</p><b>{number.format(result.chargeableWeight)} kg × {gbp.format(numericValues.freightRate)} × ₦{number.format(numericValues.exchangeRate)} = {ngn.format(result.freightNgn)}</b></article><article><span>03</span><h3>Estimated duty</h3><p>Duty estimate × CIF value (goods + insurance + freight)</p><b>{number.format(numericValues.dutyRate)}% × {ngn.format(result.cifNgn)} = {ngn.format(result.dutyNgn)}</b></article></div><div className="calc-notice"><strong>Important estimate notice</strong><p>This calculator provides an indicative estimate only. Nigerian Customs assessments depend on the correct HS code, official customs exchange rate, product classification, applicable levies and documentation. It excludes storage, demurrage and agency fees unless entered as local charges. Contact Midas for a formal quotation and customs assessment.</p></div></div></section>
   </>
 }

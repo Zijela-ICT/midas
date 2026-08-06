@@ -75,7 +75,7 @@ export const services = [
     ],
   },
   {
-    image: "/our-work/project-18.jpeg",
+    image: "/our-work/project-18.webp",
     title: "Shipment Packaging",
     tagline: "Protect every shipment.",
     description:

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const projects = [
-  ['project-01.jpeg','Export-grade crating'],['project-02.jpeg','Managed warehousing'],['project-03.jpeg','Secure container loading'],['project-04.jpeg','Industrial cargo preparation'],['project-05.jpeg','Container loading programme'],['project-06.jpeg','Palletised cargo protection'],['project-07.jpeg','Consolidated freight'],['project-08.jpeg','Full-load cargo handling'],['project-09.jpeg','Custom export crates'],['project-10.jpeg','Inventory preparation'],['project-11.jpeg','Palletised export goods'],['project-12.jpeg','Container stuffing'],['project-13.jpeg','Specialist cargo packaging'],['project-14.jpeg','Protective packaging'],['project-15.jpeg','Heavy machinery crating'],['project-16.jpeg','Project cargo handling'],['project-17.jpeg','Custom wooden crating'],['project-18.jpeg','Technology equipment packaging'],
+  ['project-01.webp','Export-grade crating'],['project-02.webp','Managed warehousing'],['project-03.webp','Secure container loading'],['project-04.webp','Industrial cargo preparation'],['project-05.webp','Container loading programme'],['project-06.webp','Palletised cargo protection'],['project-07.webp','Consolidated freight'],['project-08.webp','Full-load cargo handling'],['project-09.webp','Custom export crates'],['project-10.webp','Inventory preparation'],['project-11.webp','Palletised export goods'],['project-12.webp','Container stuffing'],['project-13.webp','Specialist cargo packaging'],['project-14.webp','Protective packaging'],['project-15.webp','Heavy machinery crating'],['project-16.webp','Project cargo handling'],['project-17.webp','Custom wooden crating'],['project-18.webp','Technology equipment packaging'],
 ]
 
 export function OurWorkPage() {

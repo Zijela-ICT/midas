@@ -25,7 +25,7 @@ export function HomePage() {
           loop
           playsInline
           preload="auto"
-          poster="/hero-shipping-poster.jpg"
+          poster="/hero-shipping-poster.webp"
           aria-hidden="true"
         >
           <source src="/hero-shipping.mp4" type="video/mp4" />
@@ -141,7 +141,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
-      <section className="home-work"><div className="container"><div className="home-work-heading"><div><div className="eyebrow">Our work in motion</div><h2>Handled with care.<br/>Delivered with confidence.</h2></div><div><p>Real cargo. Real operations. A closer look at the crating, warehousing and container-loading work behind every successful delivery.</p><a href="/our-work" onClick={(e)=>{e.preventDefault();navigate('/our-work')}}>Explore our project gallery →</a></div></div><div className="home-work-grid"><img loading="lazy" src="/our-work/project-02.jpeg" alt="Organised warehouse inventory managed by MIDAS"/><img loading="lazy" src="/our-work/project-12.jpeg" alt="Export container fully loaded with protected cargo"/><img loading="lazy" src="/our-work/project-18.jpeg" alt="Technology equipment secured in protective packaging"/></div></div></section>
+      <section className="home-work"><div className="container"><div className="home-work-heading"><div><div className="eyebrow">Our work in motion</div><h2>Handled with care.<br/>Delivered with confidence.</h2></div><div><p>Real cargo. Real operations. A closer look at the crating, warehousing and container-loading work behind every successful delivery.</p><a href="/our-work" onClick={(e)=>{e.preventDefault();navigate('/our-work')}}>Explore our project gallery →</a></div></div><div className="home-work-grid"><img loading="lazy" src="/our-work/project-02.webp" alt="Organised warehouse inventory managed by MIDAS"/><img loading="lazy" src="/our-work/project-12.webp" alt="Export container fully loaded with protected cargo"/><img loading="lazy" src="/our-work/project-18.webp" alt="Technology equipment secured in protective packaging"/></div></div></section>
       <section className="trusted">
         <div className="container trusted-row">
           <span className="trusted-label">Trusted by</span>
@@ -153,6 +153,7 @@ export function HomePage() {
                 <span>Stanbic IBTC Bank</span>
                 <span>Mövenpick</span>
                 <span>Gold Star Line</span>
+                <span>Zijela ICT Ltd</span>
               </div>
               <div className="client-group" aria-hidden="true">
                 <span>Lagos State Government</span>
@@ -160,6 +161,7 @@ export function HomePage() {
                 <span>Stanbic IBTC Bank</span>
                 <span>Mövenpick</span>
                 <span>Gold Star Line</span>
+                <span>Zijela ICT Ltd</span>
               </div>
             </div>
           </div>

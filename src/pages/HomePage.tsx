@@ -1,11 +1,24 @@
+import { useEffect, useRef } from "react";
 import { services } from "../data";
 import { navigate } from "../navigation";
 import { CtaBand } from "../components/CtaBand";
 export function HomePage() {
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const playHero = () => {
+      if (!document.hidden) void heroVideoRef.current?.play().catch(() => undefined);
+    };
+    playHero();
+    document.addEventListener("visibilitychange", playHero);
+    return () => document.removeEventListener("visibilitychange", playHero);
+  }, []);
+
   return (
     <>
       <section className="hero-home">
         <video
+          ref={heroVideoRef}
           className="hero-video"
           autoPlay
           muted

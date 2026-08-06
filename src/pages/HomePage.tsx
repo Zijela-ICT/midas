@@ -120,12 +120,23 @@ export function HomePage() {
       <section className="trusted">
         <div className="container trusted-row">
           <span className="trusted-label">Trusted by</span>
-          <div className="client-list">
-            <span>Lagos State Government</span>
-            <span>Honeywell Flour Mills</span>
-            <span>Stanbic IBTC Bank</span>
-            <span>Mövenpick</span>
-            <span>Gold Star Line</span>
+          <div className="client-marquee">
+            <div className="client-list">
+              <div className="client-group">
+                <span>Lagos State Government</span>
+                <span>Honeywell Flour Mills</span>
+                <span>Stanbic IBTC Bank</span>
+                <span>Mövenpick</span>
+                <span>Gold Star Line</span>
+              </div>
+              <div className="client-group" aria-hidden="true">
+                <span>Lagos State Government</span>
+                <span>Honeywell Flour Mills</span>
+                <span>Stanbic IBTC Bank</span>
+                <span>Mövenpick</span>
+                <span>Gold Star Line</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

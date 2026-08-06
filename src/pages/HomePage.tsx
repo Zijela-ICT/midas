@@ -5,6 +5,18 @@ export function HomePage() {
   return (
     <>
       <section className="hero-home">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/our-work/project-12.jpeg"
+          aria-hidden="true"
+        >
+          <source src="/our-work/project-video-01.mp4" type="video/mp4" />
+        </video>
         <div className="container hero-copy">
           <div className="eyebrow">Global logistics • Local expertise</div>
           <h1>
@@ -68,11 +80,11 @@ export function HomePage() {
               professionalism.
             </p>
           </div>
-          <div className="services-grid">
-            {services.slice(0, 6).map((s, i) => (
-              <article className="service-card" key={s.title}>
+          <div className="services-grid services-grid-images">
+            {services.map((s, i) => (
+              <article className="service-card service-image-card" key={s.title} style={{ "--service-image": `url('${s.image}')` } as React.CSSProperties}>
                 <div className="service-icon">0{i + 1}</div>
-                <h3>{s.title}</h3>
+                <div className="service-card-content"><h3>{s.title}</h3>
                 <p>{s.description}</p>
                 <a
                   href="/services"
@@ -82,7 +94,7 @@ export function HomePage() {
                   }}
                 >
                   Discover more →
-                </a>
+                </a></div>
               </article>
             ))}
           </div>

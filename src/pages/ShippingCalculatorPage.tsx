@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { navigate } from '../navigation'
+import { regulatoryResources } from '../data'
 
 const defaults = {
   length: 85,
@@ -70,6 +71,7 @@ export function ShippingCalculatorPage() {
         <button className="button calc-quote" onClick={() => navigate('/contact')}>Get an accurate quote</button>
       </aside>
     </div></section>
+    <section className="calculator-resources"><div className="container"><div className="calculator-resources-heading"><div><div className="eyebrow">Official resources</div><h2>Check before you ship.</h2></div><p>Use these official Nigerian regulatory resources to confirm classifications, rates and import requirements.</p></div><div className="calculator-resource-grid">{regulatoryResources.map((resource, index) => <a key={resource.name} href={resource.url} target="_blank" rel="noopener noreferrer"><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{resource.name}</h3><p>{resource.description}</p></div><b aria-hidden="true">↗</b></a>)}</div><small className="resource-disclaimer">External government services may change without notice. Midas can help confirm which requirements apply to your shipment.</small></div></section>
     <section className="calc-explainer"><div className="container"><div className="section-heading"><div><div className="eyebrow">How it works</div><h2>Clear numbers, step by step.</h2></div><p>Air freight is charged against whichever is greater: the shipment’s actual weight or its volumetric weight.</p></div><div className="formula-grid"><article><span>01</span><h3>Volumetric weight</h3><p>Length × width × height ÷ freight divisor</p><b>{number.format(numericValues.length)} × {number.format(numericValues.width)} × {number.format(numericValues.height)} ÷ {number.format(numericValues.divisor)} = {number.format(result.volumetricWeight)} kg</b></article><article><span>02</span><h3>Freight charge</h3><p>Chargeable weight × freight rate × exchange rate</p><b>{number.format(result.chargeableWeight)} kg × {gbp.format(numericValues.freightRate)} × ₦{number.format(numericValues.exchangeRate)} = {ngn.format(result.freightNgn)}</b></article><article><span>03</span><h3>Estimated duty</h3><p>Duty estimate × CIF value (goods + insurance + freight)</p><b>{number.format(numericValues.dutyRate)}% × {ngn.format(result.cifNgn)} = {ngn.format(result.dutyNgn)}</b></article></div><div className="calc-notice"><strong>Important estimate notice</strong><p>This calculator provides an indicative estimate only. Nigerian Customs assessments depend on the correct HS code, official customs exchange rate, product classification, applicable levies and documentation. It excludes storage, demurrage and agency fees unless entered as local charges. Contact Midas for a formal quotation and customs assessment.</p></div></div></section>
   </>
 }

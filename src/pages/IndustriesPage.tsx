@@ -26,7 +26,7 @@ export function IndustriesPage() {
                     <div className="industry-grid">
                         {industries.map((industry, i) => (
                             <article className="industry-card" key={industry.name}>
-                                <div className="industry-card-top"><span>{String(i + 1).padStart(2, "0")}</span><i aria-hidden="true">{industry.symbol}</i></div>
+                                <div className="industry-card-top"><span>{String(i + 1).padStart(2, "0")}</span><i className="industry-symbol" aria-hidden="true">{industry.symbol}</i></div>
                                 <h3>{industry.name}</h3>
                             </article>
                         ))}

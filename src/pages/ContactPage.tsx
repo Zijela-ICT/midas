@@ -88,6 +88,53 @@ export function ContactPage() {
           </div>
         </div>
       </section>
+      <section className="office-maps">
+        <div className="container">
+          <div className="office-maps-heading">
+            <div>
+              <div className="eyebrow">Find us</div>
+              <h2>Our offices.<br/>Your global connection.</h2>
+            </div>
+            <p>Visit our teams in Lagos or Greater Manchester. Use the interactive maps below to explore each location and plan your route.</p>
+          </div>
+          <div className="office-map-grid">
+            <article className="office-map-card">
+              <div className="office-map-frame">
+                <iframe
+                  title="MIDAS Nigeria office on Google Maps"
+                  src="https://www.google.com/maps?q=24+Adegbola+Street,+Ikeja,+Lagos,+Nigeria&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="office-map-details">
+                <span>01 · Nigeria</span>
+                <h3>Lagos office</h3>
+                <p>24 Adegbola Street, Opposite Railway Line, Ikeja, Lagos State.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=24+Adegbola+Street,+Ikeja,+Lagos,+Nigeria" target="_blank" rel="noreferrer">Open in Google Maps <b>↗</b></a>
+              </div>
+            </article>
+            <article className="office-map-card">
+              <div className="office-map-frame">
+                <iframe
+                  title="MIDAS United Kingdom office on Google Maps"
+                  src="https://www.google.com/maps?q=98+Hope+Street,+Leigh+WN7+1NP,+United+Kingdom&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+              <div className="office-map-details">
+                <span>02 · United Kingdom</span>
+                <h3>Greater Manchester office</h3>
+                <p>98 Hope Street, Leigh WN7 1NP, Greater Manchester, United Kingdom.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=98+Hope+Street,+Leigh+WN7+1NP,+United+Kingdom" target="_blank" rel="noreferrer">Open in Google Maps <b>↗</b></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

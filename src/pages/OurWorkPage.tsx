@@ -1,0 +1,18 @@
+import { useEffect, useState } from 'react'
+
+const projects = [
+  ['project-01.jpeg','Export-grade crating'],['project-02.jpeg','Managed warehousing'],['project-03.jpeg','Secure container loading'],['project-04.jpeg','Industrial cargo preparation'],['project-05.jpeg','Container loading programme'],['project-06.jpeg','Palletised cargo protection'],['project-07.jpeg','Consolidated freight'],['project-08.jpeg','Full-load cargo handling'],['project-09.jpeg','Custom export crates'],['project-10.jpeg','Inventory preparation'],['project-11.jpeg','Palletised export goods'],['project-12.jpeg','Container stuffing'],['project-13.jpeg','Specialist cargo packaging'],['project-14.jpeg','Protective packaging'],['project-15.jpeg','Heavy machinery crating'],['project-16.jpeg','Project cargo handling'],['project-17.jpeg','Custom wooden crating'],['project-18.jpeg','Technology equipment packaging'],
+]
+
+export function OurWorkPage() {
+  const [active, setActive] = useState<number | null>(null)
+  useEffect(() => { const close = (event: KeyboardEvent) => { if (event.key === 'Escape') setActive(null) }; addEventListener('keydown', close); return () => removeEventListener('keydown', close) }, [])
+  const show = (next: number) => setActive((next + projects.length) % projects.length)
+  return <>
+    <section className="work-hero"><div className="container"><div className="eyebrow">Proven in practice</div><h1>Our work.<br/><em>Handled right.</em></h1><p>From precision packaging and warehousing to complex container loading, see how MIDAS protects cargo at every stage of its journey.</p></div></section>
+    <section className="work-intro"><div className="container section-heading"><div><div className="eyebrow">Inside our operations</div><h2>Every shipment tells a story of preparation.</h2></div><p>These are real projects delivered by our teams and partners—carefully packed, securely stored and professionally prepared for onward movement.</p></div></section>
+    <section className="work-videos"><div className="container work-video-grid"><article><video controls preload="metadata" playsInline><source src="/our-work/project-video-01.mp4" type="video/mp4"/></video><div><span>01 · Field operations</span><h3>Cargo handling in motion</h3></div></article><article><video controls preload="metadata" playsInline><source src="/our-work/project-video-02.mp4" type="video/mp4"/></video><div><span>02 · Loading operations</span><h3>From preparation to dispatch</h3></div></article></div></section>
+    <section className="work-gallery-section"><div className="container"><div className="work-gallery-title"><span>Project gallery</span><small>{projects.length} moments from the field</small></div><div className="work-gallery">{projects.map(([file,caption],index)=><button type="button" onClick={()=>setActive(index)} className={`work-tile tile-${index%7}`} key={file}><img loading="lazy" src={`/our-work/${file}`} alt={caption}/><span><small>{String(index+1).padStart(2,'0')}</small>{caption}</span></button>)}</div></div></section>
+    {active !== null && <div className="work-lightbox" role="dialog" aria-modal="true" aria-label={projects[active][1]}><button className="work-lightbox-close" onClick={()=>setActive(null)} aria-label="Close image">×</button><button className="work-lightbox-prev" onClick={()=>show(active-1)} aria-label="Previous image">←</button><figure><img src={`/our-work/${projects[active][0]}`} alt={projects[active][1]}/><figcaption><span>{String(active+1).padStart(2,'0')} / {projects.length}</span>{projects[active][1]}</figcaption></figure><button className="work-lightbox-next" onClick={()=>show(active+1)} aria-label="Next image">→</button></div>}
+  </>
+}

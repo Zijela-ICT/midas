@@ -12,6 +12,7 @@ import { BlogPostPage } from './pages/BlogPostPage'
 import { ShippingCalculatorPage } from './pages/ShippingCalculatorPage'
 import { CalculatorCta } from './components/CalculatorCta'
 import { SupportChat } from './components/SupportChat'
+import { OurWorkPage } from './pages/OurWorkPage'
 
 const routes = {
   '/': HomePage,
@@ -21,6 +22,7 @@ const routes = {
   '/contact': ContactPage,
   '/posts': PostsPage,
   '/calculator': ShippingCalculatorPage,
+  '/our-work': OurWorkPage,
 }
 
 function App() {

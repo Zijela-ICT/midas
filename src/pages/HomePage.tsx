@@ -11,8 +11,8 @@ export function HomePage() {
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/our-work/project-12.jpeg"
+          preload="auto"
+          poster="/hero-shipping-poster.jpg"
           aria-hidden="true"
         >
           <source src="/hero-shipping.mp4" type="video/mp4" />

@@ -66,7 +66,7 @@
 @media(max-width:900px){.service-image-card{min-height:480px}.industry-card-top .industry-symbol{width:72px;height:72px;font-size:36px}}
 @media(max-width:600px){.service-image-card{min-height:500px}.industry-card-top .industry-symbol{width:68px;height:68px;font-size:34px}}
 @media(prefers-reduced-motion:reduce){.service-image-card:after{transition:none}}
-@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-home{background:linear-gradient(90deg,rgba(8,10,8,.92) 0%,rgba(8,10,8,.68) 48%,rgba(8,10,8,.25)),url('/our-work/project-12.jpeg') center/cover}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-home{background:linear-gradient(90deg,rgba(8,10,8,.92) 0%,rgba(8,10,8,.68) 48%,rgba(8,10,8,.25)),url('/hero-shipping-poster.jpg') center/cover}}
 
 /* Official import resources */
 .footer-grid{grid-template-columns:1.05fr .58fr .62fr .72fr 1.3fr;gap:38px}

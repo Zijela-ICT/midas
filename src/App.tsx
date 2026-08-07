@@ -13,6 +13,7 @@ import { ShippingCalculatorPage } from './pages/ShippingCalculatorPage'
 import { CalculatorCta } from './components/CalculatorCta'
 import { SupportChat } from './components/SupportChat'
 import { OurWorkPage } from './pages/OurWorkPage'
+import { ServiceDetailPage } from './pages/ServiceDetailPage'
 
 const routes = {
   '/': HomePage,
@@ -37,7 +38,9 @@ function App() {
   const Page = routes[path as keyof typeof routes] ?? HomePage
   const content = path.startsWith('/posts/')
     ? <BlogPostPage slug={decodeURIComponent(path.slice('/posts/'.length))} />
-    : <Page />
+    : path.startsWith('/services/')
+      ? <ServiceDetailPage slug={decodeURIComponent(path.slice('/services/'.length))} />
+      : <Page />
   return <div className="site-shell"><Header path={path} /><main>{content}</main>{path !== '/calculator' && <CalculatorCta />}<Footer /><SupportChat /></div>
 }
 

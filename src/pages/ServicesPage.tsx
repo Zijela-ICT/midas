@@ -1,6 +1,7 @@
 import { PageHero } from "../components/PageHero";
 import { CtaBand } from "../components/CtaBand";
 import { services } from "../data";
+import { navigate } from "../navigation";
 export function ServicesPage() {
   return (
     <>
@@ -26,6 +27,7 @@ export function ServicesPage() {
                     <li key={x}>{x}</li>
                   ))}
                 </ul>
+                <a className="service-detail-link" href={`/services/${s.slug}`} onClick={(event) => { event.preventDefault(); navigate(`/services/${s.slug}`); }}>Explore {s.title} →</a>
               </div>
             </article>
           ))}

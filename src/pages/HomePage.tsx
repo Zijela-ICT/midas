@@ -100,10 +100,10 @@ export function HomePage() {
                 <div className="service-card-content"><h3>{s.title}</h3>
                 <p>{s.description}</p>
                 <a
-                  href="/services"
+                  href={`/services/${s.slug}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate("/services");
+                    navigate(`/services/${s.slug}`);
                   }}
                 >
                   Discover more →

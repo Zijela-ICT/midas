@@ -1,5 +1,6 @@
 export const services = [
   {
+    slug: "procurement",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=86",
     title: "Procurement",
     tagline: "Smart procurement. Better value.",
@@ -15,6 +16,7 @@ export const services = [
     ],
   },
   {
+    slug: "air-freight",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=86",
     title: "Air Freight",
     tagline: "Fast. Secure. Reliable.",
@@ -30,6 +32,7 @@ export const services = [
     ],
   },
   {
+    slug: "sea-freight",
     image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1400&q=86",
     title: "Sea Freight",
     tagline: "Cost-effective global shipping.",
@@ -45,6 +48,7 @@ export const services = [
     ],
   },
   {
+    slug: "inland-logistics",
     image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1400&q=86",
     title: "Inland Logistics",
     tagline: "Nationwide delivery you can trust.",
@@ -60,6 +64,7 @@ export const services = [
     ],
   },
   {
+    slug: "warehousing",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=86",
     title: "Warehousing",
     tagline: "Secure storage. Smarter inventory.",
@@ -75,6 +80,7 @@ export const services = [
     ],
   },
   {
+    slug: "shipment-packaging",
     image: "/our-work/project-18.webp",
     title: "Shipment Packaging",
     tagline: "Protect every shipment.",
@@ -90,6 +96,7 @@ export const services = [
     ],
   },
   {
+    slug: "supply-chain-consultancy",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=86",
     title: "SCM & Logistics Consultancy",
     tagline: "Smarter supply chains. Better business.",

@@ -19,7 +19,7 @@ export function ContactPage() {
               </p>
               <a href="tel:+2348182072342">+234 818 207 2342</a><br/>
               <a href="tel:+2348161640774">+234 816 164 0774</a><br/>
-              <a href="mailto:info@midaslogisticssolutions.com">info@midaslogisticssolutions.com</a>
+              <a href="mailto:info@shipwithmidas.com">info@shipwithmidas.com</a>
             </div>
             <div className="contact-item">
               <small>United Kingdom office</small>
@@ -28,7 +28,7 @@ export function ContactPage() {
                 Kingdom.
               </p>
               <a href="tel:+447858022086">+44 7858 022086</a>
-              <br/><a href="mailto:info@midaslogisticssolutions.com">info@midaslogisticssolutions.com</a>
+              <br/><a href="mailto:tayo@shipwithmidas.com">tayo@shipwithmidas.com</a>
             </div>
           </div>
           <div className="intro-copy">
@@ -39,7 +39,7 @@ export function ContactPage() {
             </p>
             <form
               className="form"
-              action="mailto:info@midaslogisticssolutions.com"
+              action="mailto:info@shipwithmidas.com"
               method="post"
               encType="text/plain"
             >

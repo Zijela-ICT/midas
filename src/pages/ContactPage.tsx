@@ -17,10 +17,9 @@ export function ContactPage() {
               <p>
                 24 Adegbola Street, Opposite Railway Line, Ikeja, Lagos State.
               </p>
-              <a href="tel:+2348182072342">+234 818 207 2342</a><br/>
               <a href="tel:+2348161640774">+234 816 164 0774</a><br/>
-              <a href="mailto:info@shipwithmidas.com">info@shipwithmidas.com</a><br/>
-              <a href="mailto:tayo@shipwithmidas.com">tayo@shipwithmidas.com</a>
+              <a href="https://wa.me/2348182072342" target="_blank" rel="noopener noreferrer">+234 818 207 2342 (WhatsApp only)</a><br/>
+              <a href="mailto:info@shipwithmidas.com">info@shipwithmidas.com</a>
             </div>
             <div className="contact-item">
               <small>United Kingdom office</small>
@@ -28,9 +27,8 @@ export function ContactPage() {
                 98 Hope Street, Leigh WN7 1NP, Greater Manchester, United
                 Kingdom.
               </p>
-              <a href="tel:+447858022086">+44 7858 022086</a>
-              <br/><a href="mailto:info@shipwithmidas.com">info@shipwithmidas.com</a>
-              <br/><a href="mailto:tayo@shipwithmidas.com">tayo@shipwithmidas.com</a>
+              <a href="tel:+447858022086">+44 (0) 7858 022086</a>
+              <br/><a href="mailto:info@midaslogisticssolutions.com">info@midaslogisticssolutions.com</a>
             </div>
           </div>
           <div className="intro-copy">

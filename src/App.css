@@ -76,7 +76,7 @@
 .calculator-resources-heading{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:60px;margin-bottom:34px}
 .calculator-resources-heading h2{font:600 clamp(34px,4vw,48px)/1.08 'Playfair Display',serif;letter-spacing:-.03em;margin:13px 0 0}
 .calculator-resources-heading>p{color:var(--muted);line-height:1.7;margin:0}
-.calculator-resource-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}
+.calculator-resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
 .calculator-resource-grid>a{min-width:0;min-height:205px;padding:25px 22px;display:flex;flex-direction:column;text-decoration:none;background:var(--paper);border-right:1px solid var(--line);transition:.25s}
 .calculator-resource-grid>a:last-child{border-right:0}
 .calculator-resource-grid>a>span{color:var(--gold);font-size:10px}
@@ -91,6 +91,7 @@
 @media(max-width:700px){.calculator-resources-heading{grid-template-columns:1fr;gap:20px}.calculator-resource-grid{grid-template-columns:1fr}.calculator-resource-grid>a{min-height:170px;border-right:0}.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.footer-grid{grid-template-columns:1fr}.calculator-resources{padding:65px 0}}
 .copyright a{color:var(--gold2);text-decoration:none;font-weight:600}.copyright a:hover{text-decoration:underline}
+.logo img{width:180px;max-height:124px;object-fit:contain}.footer-logo{width:230px;max-height:175px;object-fit:contain}
 .service-detail-link{display:inline-block;margin-top:20px;color:var(--gold);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;text-decoration:none}
 
 /* Individual service pages */

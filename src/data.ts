@@ -17,7 +17,7 @@ export const services = [
   },
   {
     slug: "air-freight",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=86",
+    image: "https://images.unsplash.com/photo-1774698078446-59299e016718?auto=format&fit=crop&w=1600&q=84",
     title: "Air Freight",
     tagline: "Fast. Secure. Reliable.",
     description:
@@ -33,7 +33,7 @@ export const services = [
   },
   {
     slug: "sea-freight",
-    image: "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1400&q=86",
+    image: "https://images.unsplash.com/photo-1724597500306-a4cbb7d1324e?auto=format&fit=crop&w=1600&q=84",
     title: "Sea Freight",
     tagline: "Cost-effective global shipping.",
     description:
@@ -133,4 +133,5 @@ export const regulatoryResources = [
   { name: "SONCAP", shortName: "SONCAP", description: "Review conformity requirements and access SONCAP services for regulated imports.", url: "https://son.gov.ng/soncapservice/" },
   { name: "CBN Form M", shortName: "CBN Form M", description: "Access Nigeria's official trade monitoring system and import documentation services.", url: "https://www.tradesystem.gov.ng/landing/index.html" },
   { name: "NAFDAC", shortName: "NAFDAC", description: "Access product registration, import permits and regulatory services.", url: "https://services.nafdac.gov.ng/" },
+  { name: "Shipment tracking", shortName: "Shipment Tracking", description: "Track air cargo, containers, vessels and international shipments.", url: "https://www.track-trace.com/" },
 ];

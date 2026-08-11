@@ -2,6 +2,17 @@ import { useEffect, useRef } from "react";
 import { services } from "../data";
 import { navigate } from "../navigation";
 import { CtaBand } from "../components/CtaBand";
+
+const trustedPartners = [
+  { name: "Lagos State Government", logo: "/partners/lagos-state.jpg" },
+  { name: "Honeywell Flour Mills", logo: "/partners/honeywell-flour-mills.png" },
+  { name: "Stanbic IBTC Bank", logo: "/partners/stanbic-ibtc.png" },
+  { name: "Mövenpick", logo: "/partners/movenpick.png" },
+  { name: "Gold Star Line", logo: "/partners/gold-star-line.webp" },
+  { name: "Zijela ICT Ltd", logo: "/partners/zijela.jpg" },
+  { name: "The Eagles Support Ltd", logo: "/partners/the-eagles-support.jpeg" },
+];
+
 export function HomePage() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -148,22 +159,10 @@ export function HomePage() {
           <div className="client-marquee">
             <div className="client-list">
               <div className="client-group">
-                <span>Lagos State Government</span>
-                <span>Honeywell Flour Mills</span>
-                <span>Stanbic IBTC Bank</span>
-                <span>Mövenpick</span>
-                <span>Gold Star Line</span>
-                <span>Zijela ICT Ltd</span>
-                <span className="trusted-partner"><img src="/partners/the-eagles-support.jpeg" alt="The Eagles Support Ltd"/><b>The Eagles Support Ltd</b></span>
+                {trustedPartners.map((partner) => <span className="trusted-partner" key={partner.name}><img src={partner.logo} alt={`${partner.name} logo`}/><b>{partner.name}</b></span>)}
               </div>
               <div className="client-group" aria-hidden="true">
-                <span>Lagos State Government</span>
-                <span>Honeywell Flour Mills</span>
-                <span>Stanbic IBTC Bank</span>
-                <span>Mövenpick</span>
-                <span>Gold Star Line</span>
-                <span>Zijela ICT Ltd</span>
-                <span className="trusted-partner"><img src="/partners/the-eagles-support.jpeg" alt=""/><b>The Eagles Support Ltd</b></span>
+                {trustedPartners.map((partner) => <span className="trusted-partner" key={partner.name}><img src={partner.logo} alt=""/><b>{partner.name}</b></span>)}
               </div>
             </div>
           </div>

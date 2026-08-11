@@ -154,6 +154,7 @@ export function HomePage() {
                 <span>Mövenpick</span>
                 <span>Gold Star Line</span>
                 <span>Zijela ICT Ltd</span>
+                <span className="trusted-partner"><img src="/partners/the-eagles-support.jpeg" alt="The Eagles Support Ltd"/><b>The Eagles Support Ltd</b></span>
               </div>
               <div className="client-group" aria-hidden="true">
                 <span>Lagos State Government</span>
@@ -162,6 +163,7 @@ export function HomePage() {
                 <span>Mövenpick</span>
                 <span>Gold Star Line</span>
                 <span>Zijela ICT Ltd</span>
+                <span className="trusted-partner"><img src="/partners/the-eagles-support.jpeg" alt=""/><b>The Eagles Support Ltd</b></span>
               </div>
             </div>
           </div>

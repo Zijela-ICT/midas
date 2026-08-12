@@ -1,5 +1,33 @@
 import { PageHero } from "../components/PageHero";
+import { useState, type FormEvent } from "react";
+
 export function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [feedback, setFeedback] = useState("");
+
+  async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    setFeedback("");
+    const form = event.currentTarget;
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+      });
+      const result = await response.json() as { message?: string };
+      if (!response.ok) throw new Error(result.message || "Unable to send your enquiry.");
+      setStatus("success");
+      setFeedback(result.message || "Thank you. Your enquiry has been sent.");
+      form.reset();
+    } catch (error) {
+      setStatus("error");
+      setFeedback(error instanceof Error ? error.message : "Unable to send your enquiry.");
+    }
+  }
+
   return (
     <>
       <PageHero
@@ -39,10 +67,9 @@ export function ContactPage() {
             </p>
             <form
               className="form"
-              action="mailto:info@shipwithmidas.com"
-              method="post"
-              encType="text/plain"
+              onSubmit={submitEnquiry}
             >
+              <input className="form-honeypot" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
               <div className="form-row">
                 <input
                   required
@@ -81,9 +108,10 @@ export function ContactPage() {
                 placeholder="Tell us about your shipment or project"
                 aria-label="Project details"
               />
-              <button className="button" type="submit">
-                Send enquiry
+              <button className="button" type="submit" disabled={status === "sending"}>
+                {status === "sending" ? "Sending…" : "Send enquiry"}
               </button>
+              {feedback && <p className={`form-feedback ${status}`} role="status">{feedback}</p>}
             </form>
           </div>
         </div>

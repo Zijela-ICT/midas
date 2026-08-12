@@ -1,5 +1,9 @@
 # React + TypeScript + Vite
 
+## Contact form email
+
+Copy `.env.example` to `.env.local` and provide the SMTP password. Run `npm run dev` and `npm run dev:server` in separate terminals. For production, run `npm run build` followed by `npm start`; the Node server serves the built site and handles `/api/contact`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

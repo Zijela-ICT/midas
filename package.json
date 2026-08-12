@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:server": "node --env-file=.env.local server.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node --env-file-if-exists=.env.local server.mjs"
   },
   "dependencies": {
+    "express": "^5.2.1",
+    "nodemailer": "^9.0.5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
@@ -18,7 +22,9 @@
     "@eslint/js": "^10.0.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/babel__core": "^7.20.5",
+    "@types/express": "^5.0.6",
     "@types/node": "^24.13.2",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",

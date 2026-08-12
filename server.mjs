@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 const app = express();
 const port = Number(process.env.PORT || 3001);
 const root = path.dirname(fileURLToPath(import.meta.url));
-const recipient = process.env.CONTACT_TO || "info@shipwithmidas.com";
+const recipients = (process.env.CONTACT_TO || "info@shipwithmidas.com,chidubem@shipwithmidas.com,tayo@shipwithmidas.com")
+  .split(",").map((address) => address.trim()).filter(Boolean);
 const requiredMailSettings = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS"];
 const missingSettings = requiredMailSettings.filter((key) => !process.env[key]);
 const transporter = missingSettings.length ? null : nodemailer.createTransport({
@@ -57,7 +58,7 @@ app.post("/api/contact", async (request, response) => {
     ["Phone", phone || "Not provided"], ["Service", service || "Not provided"], ["Message", message]];
   try {
     await transporter.sendMail({
-      from: `Midas website <${process.env.SMTP_USER}>`, to: recipient, replyTo: email,
+      from: `Midas website <${process.env.SMTP_USER}>`, to: recipients, replyTo: email,
       subject: `Website enquiry from ${name}`,
       text: fields.map(([label, value]) => `${label}:\n${value}`).join("\n\n"),
       html: `<h2>New website enquiry</h2>${fields.map(([label, value]) => `<p><strong>${label}</strong><br>${escapeHtml(value).replace(/\n/g, "<br>")}</p>`).join("")}`,

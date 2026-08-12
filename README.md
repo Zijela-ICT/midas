@@ -4,6 +4,8 @@
 
 Copy `.env.example` to `.env.local` and provide the SMTP password. Run `npm run dev` and `npm run dev:server` in separate terminals. For production, run `npm run build` followed by `npm start`; the Node server serves the built site and handles `/api/contact`.
 
+`CONTACT_TO` accepts a comma-separated recipient list. To enable on-demand Tawk.to live chat, set `VITE_TAWK_PROPERTY_ID` and `VITE_TAWK_WIDGET_ID` before building the frontend.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

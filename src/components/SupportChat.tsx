@@ -24,11 +24,41 @@ const faqs = [
 ]
 
 const whatsappUrl = 'https://wa.me/2348182072342?text=Hello%20MIDAS%20Global%20Solutions%2C%20I%20need%20help%20with%20a%20logistics%20enquiry.'
+const tawkPropertyId = import.meta.env.VITE_TAWK_PROPERTY_ID
+const tawkWidgetId = import.meta.env.VITE_TAWK_WIDGET_ID || 'default'
+
+declare global {
+  interface Window {
+    Tawk_API?: { maximize?: () => void; onLoad?: () => void }
+    Tawk_LoadStart?: Date
+  }
+}
 
 export function SupportChat() {
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState<number | null>(null)
+
+  const startLiveChat = () => {
+    setOpen(false)
+    if (window.Tawk_API?.maximize) return window.Tawk_API.maximize()
+    if (!tawkPropertyId) {
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+    window.Tawk_API = window.Tawk_API || {}
+    window.Tawk_LoadStart = new Date()
+    window.Tawk_API.onLoad = () => window.Tawk_API?.maximize?.()
+    if (!document.querySelector('script[data-midas-tawk]')) {
+      const script = document.createElement('script')
+      script.async = true
+      script.src = `https://embed.tawk.to/${tawkPropertyId}/${tawkWidgetId}`
+      script.charset = 'UTF-8'
+      script.setAttribute('crossorigin', '*')
+      script.dataset.midasTawk = 'true'
+      document.head.appendChild(script)
+    }
+  }
 
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false) }
@@ -47,7 +77,7 @@ export function SupportChat() {
       <div className="support-welcome"><span>Hello there</span><h2>How can we help?</h2><p>Find a quick answer below. If you still need us, our team is one tap away.</p></div>
       <div className="support-search"><span aria-hidden="true">⌕</span><input value={query} onChange={event => { setQuery(event.target.value); setActive(null) }} placeholder="Search for an answer…" aria-label="Search frequently asked questions"/>{query && <button type="button" onClick={() => setQuery('')} aria-label="Clear search">×</button>}</div>
       <div className="support-content"><div className="support-section-title"><span>Frequently asked questions</span><small>{filtered.length} {filtered.length === 1 ? 'answer' : 'answers'}</small></div>{filtered.length > 0 ? <div className="support-faqs">{filtered.map(item => { const index = faqs.indexOf(item); const expanded = active === index; return <article className={expanded ? 'expanded' : ''} key={item.q}><button type="button" aria-expanded={expanded} onClick={() => setActive(expanded ? null : index)}><span>{item.q}</span><i>{expanded ? '−' : '+'}</i></button>{expanded && <div><p>{item.a}</p><div className="support-helpful"><span>Need more detail?</span><a href={whatsappUrl} target="_blank" rel="noreferrer">Ask us on WhatsApp →</a></div></div>}</article>})}</div> : <div className="support-empty"><b>No exact match found</b><p>Try a shorter search, or speak directly with our team.</p></div>}</div>
-      <footer className="support-footer"><div><span>Still need help?</span><p>Chat with a logistics specialist.</p></div><a href={whatsappUrl} target="_blank" rel="noreferrer"><i aria-hidden="true">◔</i> Continue on WhatsApp</a></footer>
+      <footer className="support-footer"><div><span>Still need help?</span><p>Chat live or message our team.</p></div><div className="support-actions"><button type="button" onClick={startLiveChat}>Start live chat</button><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp</a></div></footer>
     </section>}
     <button className="support-launcher" type="button" aria-expanded={open} aria-label={open ? 'Close help centre' : 'Open help centre'} onClick={() => setOpen(current => !current)}><span className="support-launcher-label"><b>Need help?</b><small>Browse our FAQs</small></span><i aria-hidden="true">{open ? '×' : '?'}</i></button>
   </div>

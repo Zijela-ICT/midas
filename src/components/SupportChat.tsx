@@ -24,8 +24,8 @@ const faqs = [
 ]
 
 const whatsappUrl = 'https://wa.me/2348182072342?text=Hello%20MIDAS%20Global%20Solutions%2C%20I%20need%20help%20with%20a%20logistics%20enquiry.'
-const tawkPropertyId = import.meta.env.VITE_TAWK_PROPERTY_ID
-const tawkWidgetId = import.meta.env.VITE_TAWK_WIDGET_ID || 'default'
+const tawkPropertyId = import.meta.env.VITE_TAWK_PROPERTY_ID || '6a7e058f9d627a1d49e41947'
+const tawkWidgetId = import.meta.env.VITE_TAWK_WIDGET_ID || '1jvu4bets'
 
 declare global {
   interface Window {
